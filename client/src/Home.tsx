@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import bodyImage from "./assets/illustration-1.svg";
 import tag1Image from "./assets/small crowd.jpg";
 import tag2Image from "./assets/coding.jpg";
@@ -6,10 +7,18 @@ import tag3Image from "./assets/mixing.jpg";
 import { LinkedInEmbed } from "react-social-media-embed";
 import { InstagramEmbed } from "react-social-media-embed";
 import bgImage from "./assets/cbworks_topographical_texture edit2.png";
+import SanityFetch from "./api/SanityFetch";
+import { PortableText } from "@portabletext/react";
 
 
 export default function Home() {
-
+const [welcomeMessage,setWelcomeMessage] = useState({})
+  useEffect(()=>{
+    async function buildWelcomeMessage(){
+      setWelcomeMessage(await SanityFetch(`*[_type == "articles" && title == "Welcome"][0]`))
+    }
+    buildWelcomeMessage()
+  },[])
  
 
   return (
@@ -51,10 +60,7 @@ export default function Home() {
             <p className="text-[#F4A30B] self-start">////////   ////////    ////////</p>
             
           <p className="mt-8 mb-8">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia
-            dignissimos ut sit reiciendis odit inventore necessitatibus earum,
-            reprehenderit quam eum nemo magnam harum unde. Ipsam dolores error
-            distinctio rerum rem!
+          {<PortableText value={welcomeMessage.body}/>}
           </p>
           <p className="text-secondary self-end">                       //_ _</p>
           </article>

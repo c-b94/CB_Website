@@ -1,26 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import MusicCard from './MusicCard';
-
-
-async function fetchMusic(){
-    let PROJECT_ID ="ipn68qv1";
-    let DATASET = "production"
-    let Query = encodeURIComponent(`*[_type == 'song']{
-        name,
-        description,
-        "cover":cover.asset-> url,
-        "url": song.asset-> url
-      }`)
-
-   
-    let url = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${Query}`
-    const response = await fetch(url)
-    console.log(response)
-    const music = await response.json()
-    console.log(music.result)
-    return music.result;
-}
+import SanityFetch from '../api/SanityFetch';
 
 export default function Music() {
     const[musicCards,setMusicCards] = useState([]);
@@ -34,12 +15,14 @@ export default function Music() {
                         <MusicCard key={song.id} song={song}/>
                     )
                 })
-                   
-                
-                
                 setMusicCards(html)
             }else{
-                setCatelog(await fetchMusic())
+                setCatelog(await SanityFetch(`*[_type == 'song']{
+                    name,
+                    description,
+                    "cover":cover.asset-> url,
+                    "url": song.asset-> url
+                  }`))
             } 
         }
         buildMusicCards()
