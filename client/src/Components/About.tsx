@@ -71,14 +71,14 @@ export default function About() {
       <div className="spacer"></div>
       <section className="flex flex-row">
         <div className="w-1/2 overflow-hidden">
-          <div className="h-96 carousel carousel-vertical carousel-center rounded-box mt-36 ml-16">
+          <div className="h-96 carousel carousel-vertical rounded-box mt-36 ml-16">
             {carousel}
           </div>
         </div>
         <article className="text-lg w-1/2 text-left">
         
           <p className="m-4">
-          <img className="rounded-full h-96" src={headshot.image} alt="headshot" />
+          <img className="rounded-full h-72 w-72" src={headshot.image} alt="headshot" />
             
             {
               <PortableText value={article.body}/>
