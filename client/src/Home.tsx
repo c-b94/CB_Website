@@ -9,18 +9,81 @@ import { InstagramEmbed } from "react-social-media-embed";
 import bgImage from "./assets/cbworks_topographical_texture edit2.png";
 import SanityFetch from "./api/SanityFetch";
 import { PortableText } from "@portabletext/react";
+import usePersonal from "./hooks/usePersonal";
 
 
 export default function Home() {
 const [welcomeMessage,setWelcomeMessage] = useState({})
+const [projects,setProjects] = useState([]);
+const [shows,setShows] = useState([]);
+const [author,setAuthor] = useState({});
+
+const me = usePersonal();
+console.log("my info", me)
+
+
   useEffect(()=>{
     async function buildWelcomeMessage(){
       setWelcomeMessage(await SanityFetch(`*[_type == "articles" && title == "Welcome"][0]`))
     }
-    buildWelcomeMessage()
-  },[])
- 
 
+    async function buildProjectsFeed(){
+      setProjects(await SanityFetch(`*[_type == "projects"]`))
+    }
+
+    async function buildShowsFeed(){
+      setShows(await SanityFetch(`*[_type == "shows"]`))
+    }
+
+    buildWelcomeMessage()
+    buildProjectsFeed()
+    buildShowsFeed()
+  },[])
+
+  function dateSorting(arr) {
+      const a = arr[0];
+      const b = arr[1];
+      arr.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        console.log(`A:${dateA}, B:${dateB}`);
+        return dateA - dateB;
+      });
+      console.log(`loop`, arr);
+    
+  }
+ 
+console.log("projects",projects)
+console.log("shows",shows)
+dateSorting(projects)
+dateSorting(shows)
+console.log("sorting projects",projects)
+console.log("sorting shows",shows)
+
+const projectsHtml = projects.map((project)=>{
+  return(
+    <div >
+      <p >{project.title}</p>
+      <p className="text-secondary">{project.category}</p>
+      <div className="m-2"></div>
+      <p>{project.description}</p>
+      <div className="m-2"></div>
+      <p>{project.startDate}</p>
+      <hr />
+    </div>
+  )
+})
+const showsHtml = shows.map((show)=>{
+  return(
+    <div >
+      <p>{show.title}</p>
+      <p className="text-secondary">{show.date}</p>
+      <hr />
+    </div>
+  )
+})
+
+console.log("projectsHTML",projectsHtml)
   return (
     <main className="flex flex-col text-5xl font-bold justify-center">
       <img src={bodyImage} alt="bodyImage" />
@@ -69,20 +132,32 @@ const [welcomeMessage,setWelcomeMessage] = useState({})
       </section>
       <div className="h-32 background1"></div>
       {/**spacer */}
-      <div className="flex justify-center p-8">
+      <div className="flex h-auto flex-grow justify-center p-8">
         <section 
           
-          className={`flex flex-row justify-between w-3/4 outline outline-white p-16 gap-16 background1`}
+          className={`flex h-auto flex-row justify-between w-3/4 outline outline-white p-16 gap-16 background1`}
         >
           
-          <div className="flex flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black">
+          <div className="flex h-auto flex-grow flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black">
             <p className="text-4xl ">recent projects</p>
+            <div className="text-sm mt-4">
+            {projectsHtml}
+            </div>
+            
           </div>
-          <div className="flex flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black">
+          <div className="flex h-auto flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black">
             <p className="text-4xl">upcoming shows</p>
+            <div className="text-sm mt-4">
+            {showsHtml}
+            </div>
           </div>
-          <div className="flex flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black">
+          <div className="flex h-auto flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black ">
             <p className="text-4xl">contact Info</p>
+            <div className="text-xs mt-4">
+            <p>Email:</p>
+            {me.author.email}
+            <hr />
+            </div>
           </div>
         </section>
       </div>
