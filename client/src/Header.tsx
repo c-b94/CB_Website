@@ -15,7 +15,7 @@ export default function Header() {
         <Link to="/" className="text-white">Home</Link>
         <Link to="/about" className="text-white">about</Link>
         <Link to="/music" className="text-white">music</Link>
-        <Link to="/services" className="text-white">services</Link>
+        {/* <Link to="/services" className="text-white">services</Link> */}
         
         </nav>
         
