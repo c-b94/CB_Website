@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import headerImage from "./assets/headerstyle.png"
+import { useState, useEffect } from 'react'
 
 export default function Header() {
+
+  
 
   return (
     <header className="font-mono justify-between top-0 place-items-start outline outline-4 outline-purple overflow-hidden">
