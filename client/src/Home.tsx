@@ -16,10 +16,9 @@ export default function Home() {
 const [welcomeMessage,setWelcomeMessage] = useState({})
 const [projects,setProjects] = useState([]);
 const [shows,setShows] = useState([]);
-const [author,setAuthor] = useState({});
+
 
 const me = usePersonal();
-console.log("my info", me)
 
 
   useEffect(()=>{
@@ -32,7 +31,7 @@ console.log("my info", me)
     }
 
     async function buildShowsFeed(){
-      setShows(await SanityFetch(`*[_type == "shows"]`))
+      setShows(await SanityFetch(`*[_type == "shows" && date > now()]`))
     }
 
     buildWelcomeMessage()
@@ -77,6 +76,7 @@ const showsHtml = shows.map((show)=>{
   return(
     <div >
       <p>{show.title}</p>
+      <p>{show.where}</p>
       <p className="text-secondary">{show.date}</p>
       <hr />
     </div>
