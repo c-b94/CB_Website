@@ -14,7 +14,7 @@ export default function LoadingPage() {
   return (
     <div id="overlay">
 
-        <div id="loadingIcon">
+        <div id="loadingIcon"className="phone:top-1/2 phone:left-1/2">
             <img src={logo} 
             alt="logo" />
         </div>

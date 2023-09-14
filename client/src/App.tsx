@@ -25,9 +25,9 @@ function App() {
     loading();
   },[location])
 
-  console.log("location is->:",loadingSCREEN)
+
   return (
-    <body className="outline outline-4 outline-purple">
+    <body id="page" className="outline outline-4 outline-purple phone:w-screen">
       {loadingSCREEN}
       <Header/>
       <Routes>
