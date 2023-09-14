@@ -7,21 +7,6 @@ import SanityFetch from "../api/SanityFetch";
 import { PortableText } from "@portabletext/react";
 
 
-async function fetcharticles(){
-  let PROJECT_ID ="ipn68qv1";
-  let DATASET = "production"
-  let Query = encodeURIComponent(`*[_type == 'picture']{
-    name,
-    "image":image.asset-> url
-  }`)
-
- 
-  let url = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${Query}`
-  const response = await fetch(url)
-  console.log(response)
-  const images = await response.json()
-  return images.result;
-}
 
 export default function About() {
   const [imageArr,setImageArr] = useState([]);
@@ -63,22 +48,21 @@ export default function About() {
   
 
   },[imageArr])
-  console.log("map of images",carousel)
-  console.log('headshot',headshot)
+  
  
   return (
     <main className="main-container">
-      <div className="spacer"></div>
-      <section className="flex flex-row">
-        <div className="w-1/2 overflow-hidden">
-          <div className="h-96 carousel carousel-vertical rounded-box mt-36 ml-16">
+      <div className="spacer slowmotion"></div>
+      <section className="flex flex-row bg-black phone:flex-col-reverse">
+        <div className="w-1/2 overflow-hidden phone:w-screen">
+          <div className="h-96 carousel carousel-vertical rounded-box mt-36 ml-16 phone:ml-0">
             {carousel}
           </div>
         </div>
-        <article className="text-lg w-1/2 text-left">
+        <article className="text-lg w-1/2 text-left phone:w-screen phone:text-center">
         
           <p className="m-4">
-          <img className="rounded-full h-72 w-72" src={headshot.image} alt="headshot" />
+          <img className="rounded-full h-72 w-72 phone:ml-8" src={headshot.image} alt="headshot" />
             
             {
               <PortableText value={article.body}/>
@@ -86,7 +70,7 @@ export default function About() {
           </p>
         </article>
       </section>
-      <div className="spacer"></div>
+      <div className="spacer slowmotion"></div>
     </main>
   );
 }

@@ -6,11 +6,11 @@ import PersonalProvider from './api/personalProvider.tsx'
 import '../dist/output.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  
     <PersonalProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </PersonalProvider>
-  </React.StrictMode>,
+  ,
 )

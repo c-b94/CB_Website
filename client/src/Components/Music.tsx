@@ -27,18 +27,18 @@ export default function Music() {
         }
         buildMusicCards()
     },[catelog])
-    console.log("in Catelog:",catelog)
+    
   return (
-    <div className="main-container">Music
-         <div className="spacer"></div>
+    <div className="main-container phone:w-screen">Music
+         <div className="spacer phone:w-screen"></div>
          <section className="section-container3">
-            <div className="cover-container">
+            <div className="cover-container phone:p-4 phone:self-center phone:w-full phone:items-center">
                 <div className="card-container flex-wrap flex-grow">
                     {musicCards}
                 </div>
             </div>
          </section>
-         <div className="spacer"></div>
+         <div className="spacer phone:w-screen"></div>
     </div>
   )
 }
