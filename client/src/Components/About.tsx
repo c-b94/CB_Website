@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import pic1 from '../assets/mixing.jpg'
-import pic2 from '../assets/small crowd.jpg'
+import { useEffect,ReactElement } from "react";
 import { useState} from "react";
 import ImageCarousel from "./ImageCarousel";
 import SanityFetch from "../api/SanityFetch";
@@ -9,22 +7,29 @@ import { PortableText } from "@portabletext/react";
 
 
 export default function About() {
-  const [imageArr,setImageArr] = useState([]);
-  const [carousel,setCarousel] = useState([]);
-  const [article, setArticle] = useState({});
-  const [headshot,setHeadshot] = useState({});
+  interface Article{
+    body: [];
+  }
 
+  interface Headshot{
+    image: string
+  }
+  const [imageArr,setImageArr] = useState<Array<{id:string}>>([]);
+  const [carousel,setCarousel] = useState<ReactElement | null>(null)
+  const [article, setArticle] = useState<Article>({body:[]});
+  const [headshot,setHeadshot] = useState<Headshot>({image:""});
+ 
   
 
   useEffect(()=>{
     async function buildCarousel(){
       if(imageArr.length >0){
-        let html = imageArr.map((image)=>{
+        const html = imageArr.map((image)=>{
           return(
             <ImageCarousel key={image.id} image={image}/>
           )
         })
-        setCarousel(html);
+        setCarousel(<>{html}</>);
       }else{
         setImageArr(await SanityFetch(`*[_type == 'picture']{
           name,

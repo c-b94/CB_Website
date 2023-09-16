@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
+import { useEffect, useState } from 'react'
 import MusicCard from './MusicCard';
 import SanityFetch from '../api/SanityFetch';
 
 export default function Music() {
-    const[musicCards,setMusicCards] = useState([]);
-    const [catelog,setCatelog] = useState([]);
+    interface Song{
+       id:string
+       cover: string;
+        name: string;
+        description: string;
+        url: string;
+    }
+    const[musicCards,setMusicCards] = useState<JSX.Element[]>([]);
+    const [catelog,setCatelog] = useState<Song[]>([]);
     useEffect(()=>{
         
         async function buildMusicCards(){
             if(catelog.length > 0){
-                let html = catelog.map((song)=>{
+                const html = catelog.map((song)=>{
                     return(
                         <MusicCard key={song.id} song={song}/>
                     )

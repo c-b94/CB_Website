@@ -1,5 +1,4 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+
 import soc1 from "./assets/LI-Logo.png"
 import soc2 from "./assets/118541-logo-instagram-png-download-free.png"
 import soc3 from "./assets/pngwing.com.png"

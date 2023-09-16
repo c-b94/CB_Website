@@ -1,16 +1,21 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
+
 import logo from "/home/cb-code/projects/CB-Website/client/src/assets/logo.png"
 export default function LoadingPage() {
     
-    window.onload = (e) =>{
+    window.onload = () =>{
         const pageDiv = document.getElementById("overlay");
-        pageDiv.classList.add("fade-out")
+        if(pageDiv){
+          pageDiv.classList.add("fade-out")  
+            setInterval(()=>{
+                pageDiv.remove()
+            },1050)
+        }
         
-        setInterval(()=>{
-            pageDiv.remove()
-        },1050)
+        
+        
     }
+
+    
   return (
     <div id="overlay">
 

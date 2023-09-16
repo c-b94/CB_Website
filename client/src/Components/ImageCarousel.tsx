@@ -1,6 +1,6 @@
-import React from 'react'
 
-export default function ImageCarousel(props) {
+
+export default function ImageCarousel(props:any) {
 
     
   return (

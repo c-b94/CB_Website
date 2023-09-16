@@ -1,11 +1,22 @@
-import { createContext } from "react";
+import { createContext, ReactNode} from "react";
 import { useState, useEffect } from "react";
 import SanityFetch from "./SanityFetch";
 
-export const PersonalContext = createContext();
+export const PersonalContext = createContext<Me>({author:{name:"",email:"",headshot:{}}});
 
-const PersonalProvider = ({ children }) => {
-  const [author, setAuthor] = useState({});
+interface PersonalProviderProps {
+  children: ReactNode; // Specify the type for the 'children' prop
+}
+interface Me {
+  author:{
+    name:string;
+    email:string;
+    headshot: object;
+  }
+}
+
+const PersonalProvider = ({ children }:PersonalProviderProps) => {
+  const [author, setAuthor] = useState<Me>({author:{name:"",email:"",headshot:{}}});
 
   useEffect(() => {
     async function getMeFetch() {
@@ -13,8 +24,8 @@ const PersonalProvider = ({ children }) => {
     }
     getMeFetch();
   }, []);
-
-  const contextValue = {author};
+console.log("author in context and data",author)
+  const contextValue = author;
   
 
   return (

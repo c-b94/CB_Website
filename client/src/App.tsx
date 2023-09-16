@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState,ReactElement } from 'react'
 import Header from './Header'
 import Home from './Home'
 import Footer from './Footer'
@@ -12,13 +12,13 @@ import './App.css'
 function App() {
   
   
-  const [loadingSCREEN,setLoadingSCREEN] = useState("")
+  const [loadingSCREEN,setLoadingSCREEN] = useState<ReactElement | null>(null)
   let location = useLocation();
 
   useEffect(()=>{
    
     async function loading(){
-      const html = <LoadingPage/>
+      const html= <LoadingPage/>
       setLoadingSCREEN(html)
     }
     

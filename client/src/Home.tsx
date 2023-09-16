@@ -1,24 +1,46 @@
-import React from "react";
+
 import { useEffect, useState } from "react";
 import bodyImage from "./assets/illustration-1.svg";
 import tag1Image from "./assets/small crowd.jpg";
 import tag2Image from "./assets/coding.jpg";
 import tag3Image from "./assets/mixing.jpg";
-import { LinkedInEmbed } from "react-social-media-embed";
 import { InstagramEmbed } from "react-social-media-embed";
-import bgImage from "./assets/cbworks_topographical_texture edit2.png";
 import SanityFetch from "./api/SanityFetch";
 import { PortableText } from "@portabletext/react";
 import usePersonal from "./hooks/usePersonal";
 
+interface Project {
+  title: string;
+  category: string;
+  description: string;
+  startDate: string; // You might want to use a Date type here if applicable
+}
+
+interface Show {
+  title: string;
+  where: string;
+  date: string; // You might want to use a Date type here if applicable
+}
+
+interface Welcome{
+  body:[]
+}
+
+interface Me {
+  author:{
+    name:string;
+    email:string;
+    headshot: object;
+  }
+}
 
 export default function Home() {
-const [welcomeMessage,setWelcomeMessage] = useState({})
-const [projects,setProjects] = useState([]);
-const [shows,setShows] = useState([]);
+const [welcomeMessage,setWelcomeMessage] = useState<Welcome>({body:[]})
+const [projects,setProjects] = useState<Project[]>([]);
+const [shows,setShows] = useState<Show[]>([]);
 
 
-const me = usePersonal();
+const me:Me= usePersonal();
 
 
   useEffect(()=>{
@@ -39,12 +61,12 @@ const me = usePersonal();
     buildShowsFeed()
   },[])
 
-  function dateSorting(arr) {
-      const a = arr[0];
-      const b = arr[1];
+  function dateSorting(arr:{date: string}[]) {
+      // const a = arr[0];
+      // const b = arr[1];
       arr.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
+        const dateA = new Date(a.date) as any;
+        const dateB = new Date(b.date) as any;
        
         return dateA - dateB;
       });
@@ -53,7 +75,7 @@ const me = usePersonal();
   }
  
 
-dateSorting(projects)
+
 dateSorting(shows)
 
 
@@ -157,7 +179,7 @@ const showsHtml = shows.map((show)=>{
             <p className="text-4xl">contact Info</p>
             <div className="text-xs mt-4 phone:ml-3">
             <p>Email:</p>
-            {me.author.email}
+             <span>cedricboudreaux@yahoo.com</span>
             <hr />
             </div>
           </div>
