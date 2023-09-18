@@ -12,9 +12,9 @@ export default {
       'xl': {'max': '1279px'},
       // => @media (max-width: 1279px) { ... }
 
-      'lg': {'max': '1023px'},
+      'lg': {'max': '1150px'},
       // => @media (max-width: 1023px) { ... }
-      'pc': '768px',
+      'pc': '1023px',
       // => @media min-width {768px}
       'tablet': {'max': '767px'},
       // => @media (max-width: 767px) { ... }
