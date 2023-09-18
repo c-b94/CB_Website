@@ -1,5 +1,5 @@
 
-import logo from "/home/cb-code/projects/CB-Website/client/src/assets/logo.png"
+import logo from "../assets/logo.png"
 export default function LoadingPage() {
     
     window.onload = () =>{
