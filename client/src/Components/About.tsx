@@ -57,7 +57,7 @@ export default function About() {
  
   return (
     <main className="main-container">
-      <div className="spacer slowmotion"></div>
+      <div className="spacer background1"></div>
       <section className="flex flex-row bg-black phone:flex-col-reverse">
         <div className="w-1/2 overflow-hidden phone:w-screen">
           <div className="h-96 carousel carousel-vertical rounded-box mt-36 ml-16 phone:ml-0">
@@ -75,7 +75,7 @@ export default function About() {
           </p>
         </article>
       </section>
-      <div className="spacer slowmotion"></div>
+      <div className="spacer background1"></div>
     </main>
   );
 }

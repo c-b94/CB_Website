@@ -35,16 +35,16 @@ export default function Music() {
     },[catelog])
     
   return (
-    <div className="main-container phone:w-screen">Music
-         <div className="spacer phone:w-screen"></div>
-         <section className="section-container3">
-            <div className="cover-container phone:p-4 phone:self-center phone:w-full phone:items-center">
-                <div className="card-container flex-wrap flex-grow">
+    <div className="flex-col text-5xl font-bold justify-center  phone:w-screen">Music
+         <div className="spacer background1 phone:w-screen"></div>
+         <section className="bg-black flex h-auto flex-grow justify-center p-8 ">
+            <div className="flex h-auto flex-row justify-between w-3/4 outline outline-white p-16 gap-16 background1  phone:p-4 phone:self-center phone:w-full phone:items-center">
+                <div className="flex flex-wrap flex-grow gap-8">
                     {musicCards}
                 </div>
             </div>
          </section>
-         <div className="spacer phone:w-screen"></div>
+         <div className="spacer background1 phone:w-screen"></div>
     </div>
   )
 }

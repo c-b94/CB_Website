@@ -1,4 +1,4 @@
-import { useEffect, useState,ReactElement } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './Header'
 import Home from './Home'
 import Footer from './Footer'
@@ -12,8 +12,8 @@ import './App.css'
 function App() {
   
   
-  const [loadingSCREEN,setLoadingSCREEN] = useState<ReactElement | null>(null)
-  let location = useLocation();
+  const [loadingSCREEN,setLoadingSCREEN] = useState<JSX.Element>()
+  const location = useLocation();
 
   useEffect(()=>{
    
@@ -25,7 +25,7 @@ function App() {
     loading();
   },[location])
 
-
+console.log("testing loading screen",loadingSCREEN)
   return (
     <body id="page" className="outline outline-4 outline-purple phone:w-screen">
       {loadingSCREEN}

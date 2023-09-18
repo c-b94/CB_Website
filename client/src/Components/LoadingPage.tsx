@@ -14,8 +14,7 @@ export default function LoadingPage() {
         
         
     }
-
-    
+    console.log("loadingPage")
   return (
     <div id="overlay">
 

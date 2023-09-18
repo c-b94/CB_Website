@@ -8,7 +8,7 @@ export default function Header() {
   
 
   return (
-    <header className="bg-black font-mono justify-between top-0 place-items-start outline outline-4 outline-purple overflow-hidden phone:w-screen phone:flex-col">
+    <header className="flex flex-row bg-black font-mono justify-between top-0 place-items-start outline outline-4 outline-red overflow-hidden phone:w-screen phone:flex-col">
         <div className="flex flex-row phone:self-center">
         <img className="w-40 mt-0 phone:w-16" src={headerImage} alt="icon" />
         <h1 className="mt-6 phone:text-2xl">CB_WORKS</h1>

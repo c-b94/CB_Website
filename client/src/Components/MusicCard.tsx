@@ -21,7 +21,7 @@ const PlayerWrapper: React.FC <PlayerWrapperProps>= ({ children }) => {
 export default function MusicCard(props: MusicCardProps) {
     
   return (
-    <div className="cover-innerContainer w-full flex-row justify-center phone:flex-col phone:h-fit">
+    <div className="flex h-auto flex-grow flex-wrap w-56 h-64 outline outline-[#F4A30B] p-4 bg-black w-full flex-row justify-center phone:flex-col phone:h-fit">
         <div className="flex items-center justify-center">
         <img className="h-5/6 phone:h-40" src={props.song.cover} alt="no image" />
         </div>
