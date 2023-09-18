@@ -14,7 +14,8 @@ export default {
 
       'lg': {'max': '1023px'},
       // => @media (max-width: 1023px) { ... }
-
+      'pc': '768px',
+      // => @media min-width {768px}
       'tablet': {'max': '767px'},
       // => @media (max-width: 767px) { ... }
 

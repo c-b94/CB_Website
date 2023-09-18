@@ -25,9 +25,10 @@ export default function MusicCard(props: MusicCardProps) {
         <div className="flex items-center justify-center">
         <img className="h-5/6 phone:h-40" src={props.song.cover} alt="no image" />
         </div>
-        <div className="flex flex-col w-1/2 justify-center items-center phone:self-center phone:w-4/5">
+        <div className="flex pc:w-1/2 flex-col justify-center items-center phone:self-center">
         <p className="text-lg underline phone:text-sm">{props.song.name}</p>
         <p className="text-lg phone:text-sm">{props.song.description}</p>
+
         <ReactPlayer url={props.song.url} volume={0.75} controls={true} width='200px' height='50px' wrapper={PlayerWrapper}/>
         </div>
         
