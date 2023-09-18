@@ -24,7 +24,7 @@ const PersonalProvider = ({ children }:PersonalProviderProps) => {
     }
     getMeFetch();
   }, []);
-console.log("author in context and data",author)
+
   const contextValue = author;
   
 

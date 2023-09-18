@@ -25,7 +25,7 @@ function App() {
     loading();
   },[location])
 
-console.log("testing loading screen",loadingSCREEN)
+
   return (
     <body id="page" className="outline outline-4 outline-purple phone:w-screen">
       {loadingSCREEN}
