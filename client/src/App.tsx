@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+ import { useEffect} from 'react'
+ import { useState } from 'react'
 import Header from './Header'
 import Home from './Home'
 import Footer from './Footer'
 import About from './Components/About'
 import Music from './Components/Music'
-import {Route,Routes,useLocation} from 'react-router-dom'
+import {Route,Routes} from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import LoadingPage from './Components/LoadingPage'
 import './App.css'
 
@@ -12,8 +14,8 @@ import './App.css'
 function App() {
   
   
-  const [loadingSCREEN,setLoadingSCREEN] = useState<JSX.Element>()
-  const location = useLocation();
+   const [loadingSCREEN,setLoadingSCREEN] = useState<JSX.Element>()
+   const location = useLocation();
 
   useEffect(()=>{
    
