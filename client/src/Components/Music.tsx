@@ -4,7 +4,7 @@ import SanityFetch from '../api/SanityFetch';
 
 export default function Music() {
     interface Song{
-       id:string
+       id:number;
        cover: string;
         name: string;
         description: string;

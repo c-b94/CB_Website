@@ -1242,6 +1242,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+audio{
+  width:300px !important;
+  height:50px !important;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #ffffff;
@@ -1356,7 +1361,7 @@ button:focus-visible {
 }
 
 .fade-out{
-  animation:fade-out 1100ms linear
+  animation:fade-out 2100ms linear
 }
 
 .spacer{

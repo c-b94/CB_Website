@@ -59,6 +59,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+audio{
+  width:300px !important;
+  height:50px !important;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -156,7 +161,7 @@ animation:rotate-vert-center 2.5s linear infinite;
   cursor: pointer; /* Add a pointer on hover */
 }
 .fade-out{
-  animation:fade-out 1100ms linear
+  animation:fade-out 2100ms linear
 }
 
 .spacer{
